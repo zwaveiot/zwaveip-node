@@ -71,8 +71,10 @@ This library enables node.js application to communicate with Z-Wave devices via 
 > ZWaveIP.requestNodeListFromGatewayController(gatewayIpAddress, pskIdentity, pskPassword)  
 > .then(  
 > &nbsp;&nbsp;&nbsp;&nbsp;function(nodeList) {  
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let ipAddress = nodeList[index].ipv4Address === null ? nodeList[index].ipv6Address : nodeList[index].ipv4Address;  
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('Z-Wave Node # ' + nodeList[index].nodeId + ' (' + ipAddress + ')');  
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (let index = 0; index < nodeList.length; index++) {  
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let ipAddress = nodeList[index].ipv4Address === null ? nodeList[index].ipv6Address : nodeList[index].ipv4Address;  
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('Z-Wave Node # ' + nodeList[index].nodeId + ' (' + ipAddress + ')');  
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}  
 > &nbsp;&nbsp;&nbsp;&nbsp;},  
 > &nbsp;&nbsp;&nbsp;&nbsp;function(err) {  
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('Could not request node lsit from the specified Z-Wave Gateway Controller: ' + JSON.stringify(err));  
